@@ -24,6 +24,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="80dp"
         android:text="박혜림"
+        android:onClick="onClickPhlBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
