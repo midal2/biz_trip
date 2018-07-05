@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void onClickArkBtn(View view){
+        Intent intent = new Intent(this, ConstraintActivity2.class);
+        startActivity(intent);
+    }
 }

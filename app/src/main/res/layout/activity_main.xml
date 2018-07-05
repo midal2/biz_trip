@@ -32,9 +32,10 @@
         android:id="@+id/kar_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="80dp"
         android:text="고아라"
+        android:onClick="onClickArkBtn"
         app:layout_constraintStart_toEndOf="@+id/phl_btn"
         app:layout_constraintTop_toTopOf="parent" />
 
