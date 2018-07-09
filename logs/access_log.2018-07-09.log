@@ -1,0 +1,2 @@
+2018-07-09 22:08:15	200	GET /test/datasend_get_method?data1=%EA%B0%921&data2=%EA%B0%922 HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	127.0.0.1	42
+2018-07-09 22:08:15	200	GET /favicon.ico HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	http://127.0.0.1:7500/test/datasend_get_method?data1=%EA%B0%921&data2=%EA%B0%922	127.0.0.1	946

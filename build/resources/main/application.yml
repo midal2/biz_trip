@@ -1,0 +1,24 @@
+--- #Default
+server:
+  port: 9000 #서버포트
+  tomcat: #톰캣설정
+    accesslog:
+      pattern: "%{yyyy-MM-dd HH:mm:ss}t\t%s\t%r\t%{User-Agent}i\t%{Referer}i\t%a\t%b"
+      enabled: true
+    basedir: .
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration #DB안쓸경우 설정
+---
+spring:
+  profiles: local
+---
+spring:
+  profiles: dev
+---
+spring:
+  profiles: real
+
+
+
+

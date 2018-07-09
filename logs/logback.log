@@ -1,0 +1,4 @@
+[2018-07-09 22:08:15:45914][http-nio-7500-exec-1] DEBUG b.s.sample.ServerMissionController - =========================logger str ========================
+[2018-07-09 22:08:15:45918][http-nio-7500-exec-1] DEBUG b.s.sample.ServerMissionController - data1 : 값1
+[2018-07-09 22:08:15:45919][http-nio-7500-exec-1] DEBUG b.s.sample.ServerMissionController - data2 : 값1
+[2018-07-09 22:08:15:45919][http-nio-7500-exec-1] DEBUG b.s.sample.ServerMissionController - =========================logger end ========================
