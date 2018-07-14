@@ -1,0 +1,16 @@
+2018-07-14 07:55:08	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-14 07:55:21	200	GET /a HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-14 07:55:27	200	GET /a HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-14 07:55:58	400	GET /test/datasend_get_method HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	344
+2018-07-14 07:58:56	400	GET /test/datasend_get_method HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	344
+2018-07-14 07:59:05	200	GET /a HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	3
+2018-07-14 07:59:10	200	GET /b HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	3
+2018-07-14 08:05:54	200	GET /b HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	3
+2018-07-14 08:07:18	404	GET /test HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	306
+2018-07-14 08:07:30	400	GET /test/datasend_get_method HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	344
+2018-07-14 08:17:41	400	GET /test/datasend_get_method HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	344
+2018-07-14 08:41:57	400	GET /test/datasend_get_method HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	344
+2018-07-14 08:43:48	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-14 08:44:16	200	GET /test/datasend_get_method?data1=%22%EA%B0%921%22&data2=%22%EA%B0%922%22 HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	50
+2018-07-14 08:46:25	200	GET /test/datasend_get_method?data1=%22%EA%B0%921%22&data2=%22%EA%B0%922%22 HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	50
+2018-07-14 08:47:19	200	GET /test/datasend_get_method?data1=%22%EA%B0%921%22&data2=%22%EA%B0%922%22 HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	50

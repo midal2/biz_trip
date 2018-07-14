@@ -1,0 +1,9 @@
+2018-07-08 15:27:34	404	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	306
+2018-07-08 15:27:34	200	GET /favicon.ico HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	http://localhost:9000/	0:0:0:0:0:0:0:1	946
+2018-07-08 15:29:57	404	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	306
+2018-07-08 15:53:53	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-08 15:58:30	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-08 16:00:13	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-08 16:25:54	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-08 16:27:28	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4
+2018-07-08 16:30:51	200	GET / HTTP/1.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36	-	0:0:0:0:0:0:0:1	4

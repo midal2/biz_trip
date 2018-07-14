@@ -1,0 +1,11 @@
+[2018-07-08 16:25:33:1871][main] INFO  biztrip.SpringStart - Starting SpringStart on DESKTOP-AGA6HKD with PID 16768 (C:\Users\smar0510\IdeaProjects\sample3\out\production\classes started by smar0510 in C:\Users\smar0510\IdeaProjects\sample3)
+[2018-07-08 16:25:33:1873][main] DEBUG biztrip.SpringStart - Running with Spring Boot v2.0.1.RELEASE, Spring v5.0.5.RELEASE
+[2018-07-08 16:25:33:1882][main] INFO  biztrip.SpringStart - No active profile set, falling back to default profiles: default
+[2018-07-08 16:25:43:11747][main] INFO  biztrip.SpringStart - Started SpringStart in 11.103 seconds (JVM running for 12.47)
+[2018-07-08 16:25:54:22685][http-nio-7500-exec-10] DEBUG b.svc.sample.RestControllerSample - 로그
+[2018-07-08 16:27:11:2067][main] INFO  biztrip.SpringStart - Starting SpringStart on DESKTOP-AGA6HKD with PID 10020 (C:\Users\smar0510\IdeaProjects\sample3\out\production\classes started by smar0510 in C:\Users\smar0510\IdeaProjects\sample3)
+[2018-07-08 16:27:11:2069][main] DEBUG biztrip.SpringStart - Running with Spring Boot v2.0.1.RELEASE, Spring v5.0.5.RELEASE
+[2018-07-08 16:27:11:2071][main] INFO  biztrip.SpringStart - No active profile set, falling back to default profiles: default
+[2018-07-08 16:27:20:11167][main] INFO  biztrip.SpringStart - Started SpringStart in 10.427 seconds (JVM running for 11.843)
+[2018-07-08 16:27:28:18989][http-nio-7500-exec-9] DEBUG b.svc.sample.RestControllerSample - 로그!!!!!!!!!!!!!!!!!!!!!
+[2018-07-08 16:30:51:14460][http-nio-7500-exec-10] DEBUG b.svc.sample.RestControllerSample - 로그!!!!!!!!!!!!!!!!!!!!!
