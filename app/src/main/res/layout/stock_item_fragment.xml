@@ -4,35 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:context=".MainFragment"
+    android:layout_marginTop="?actionBarSize"
+    >
 
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/stock_title_txt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="100dp"
-        android:text="TextView" />
+        android:text="주식명\n(종목코드)"
+        android:gravity="center_horizontal|center_vertical" />
 
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        >(
+        android:stretchColumns="1">
 
         <TableRow>
             <TextView
-                android:id="@+id/textView2"
-                android:layout_marginTop="70dp"
-                android:text="TextView" />
-
+                android:text="최종갱신시간"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical|center_horizontal"
+                />
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/update_dt_txt"
+                android:text="2018-07-15 13:33:33"
+                android:textAlignment="textStart"
+                />
         </TableRow>
 
         <TableRow>
             <TextView
-                android:id="@+id/textView3"
-                android:text="TextView" />
-
+                android:text="현재가" />
+            <TextView
+                android:id="@+id/now_price_txt"
+                android:textAlignment="textStart"
+                android:text="35,450"
+                />
         </TableRow>
     </TableLayout>
 
