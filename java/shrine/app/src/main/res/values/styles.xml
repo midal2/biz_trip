@@ -22,7 +22,7 @@
     </style>
 
     <style name="Widget.Shrine.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">?attr/colorPrimaryDark</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
         <item name="backgroundTint">?attr/colorControlActivated</item>
         <item name="android:stateListAnimator" tools:ignore="NewApi">@animator/shr_next_button_state_list_anim</item>
     </style>
@@ -33,7 +33,7 @@
 
     <style name="Widget.Shrine.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorAccent</item>
-        <item name="android:theme">@style/Theme.Shrine.Dark</item>
+        <item name="android:theme">@style/Theme.Shrine</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="titleTextAppearance">@style/TextAppearance.Shrine.Toolbar</item>
     </style>
@@ -54,6 +54,10 @@
         <item name="colorControlActivated">#FFCF44</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Widget.Shrine.Backdrop" parent="">
+        <item name="android:background">?attr/colorAccent</item>
     </style>
 
 </resources>
