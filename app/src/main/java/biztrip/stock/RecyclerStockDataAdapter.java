@@ -11,13 +11,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
-import biztrip.test.R;
+import lombok.Data;
 
 import static biztrip.util.Common.Step;
 
+@Data
 public class RecyclerStockDataAdapter extends RecyclerView.Adapter<StockViewHolder> {
     private ArrayList<StockInfo> stockInfos;
-    
+
+
     public RecyclerStockDataAdapter(){
         stockInfos = createDummyData();
     }
