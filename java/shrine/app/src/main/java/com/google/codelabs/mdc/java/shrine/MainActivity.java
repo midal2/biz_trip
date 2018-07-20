@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-//Activity 라고 할려면 반드시 상속 AppCompatActivity
+
 public class MainActivity extends AppCompatActivity implements NavigationHost {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView : 그림 그려라
         setContentView(R.layout.shr_main_activity);
 
         if (savedInstanceState == null) {

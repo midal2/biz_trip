@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
-import com.google.codelabs.mdc.java.shrine.network.ProductEntry;
 
 public class ProductCardViewHolder extends RecyclerView.ViewHolder {
 
@@ -20,6 +19,4 @@ public class ProductCardViewHolder extends RecyclerView.ViewHolder {
         productTitle = itemView.findViewById(R.id.product_title);
         productPrice = itemView.findViewById(R.id.product_price);
     }
-
-
 }
