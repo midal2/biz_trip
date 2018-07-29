@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".MainFragment"
+    tools:context=".RecyclerStockDataAdapter"
     >
 
     <LinearLayout
@@ -16,8 +16,8 @@
         <TextView
             android:id="@+id/stock_title_txt"
             android:layout_margin = "10dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="주식명\n(종목코드)"
             android:gravity="center_horizontal|center_vertical" />
 
@@ -28,25 +28,37 @@
 
             <TableRow>
                 <TextView
-                    android:text="최종갱신시간"
+                    android:text="현재가"
                     android:layout_margin="5dp"
-                    android:gravity="center_vertical|center_horizontal"
                     />
+
                 <TextView
+                    android:id="@+id/now_price_txt"
                     android:layout_margin="5dp"
-                    android:id="@+id/update_dt_txt"
-                    android:text="2018-07-15 13:33:33"
-                    android:textAlignment="textStart"
+                    android:text="35,450"
+                    />
+
+                <TextView
+                    android:text="2018-01-01 11:01:11"
+                    android:layout_margin="5dp"
                     />
             </TableRow>
 
             <TableRow>
                 <TextView
-                    android:text="현재가" />
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_margin="5dp"
+                    android:text="등락폭" />
+
                 <TextView
-                    android:id="@+id/now_price_txt"
-                    android:textAlignment="textStart"
-                    android:text="35,450"
+                    android:id="@+id/update_dt_txt"
+                    android:layout_margin="5dp"
+                    android:text="50,000"
+                    />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:text="거래량 5,000"
                     />
             </TableRow>
         </TableLayout>
