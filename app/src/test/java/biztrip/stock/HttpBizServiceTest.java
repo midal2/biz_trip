@@ -21,8 +21,7 @@ public class HttpBizServiceTest {
     @Test
     public void send() {
         HttpBizService httpBizService = new HttpBizService();
-        Map<String, Object> resultMap = httpBizService.send("http://13.209.78.211:9000/stock/getAllInfo", "");
-        System.out.println(resultMap);
+        Map<String, Object> resultMap = httpBizService.send("http://13.209.159.207:9000/stock/getAllInfo", "");
 //        httpBizService.send("")
     }
 }

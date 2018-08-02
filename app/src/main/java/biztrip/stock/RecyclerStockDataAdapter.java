@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -36,11 +38,38 @@ public class RecyclerStockDataAdapter extends RecyclerView.Adapter<StockViewHold
             stockInfo.setNowPrice(i * 10000);
             stockInfo.setStockCd("0000" + i);
             stockInfo.setStockNm("Stock" + i);
-            stockInfo.setUpdateDt(new Date());
+            stockInfo.setUpdateDt("");
 
             stockInfos.add(stockInfo);
         }
         return  stockInfos;
+    }
+
+    private ArrayList<StockInfo> createRealData() {
+        ArrayList<StockInfo> stockInfos = new ArrayList();
+
+        HttpBizService httpBizService = new HttpBizService();
+        Map<String, Object> resultMap = httpBizService.send("http://13.209.159.207:9000/stock/getAllInfo", "");
+
+        if ("0000".equals(resultMap.get("RESPONSE_CODE"))) {
+            List<Map<String, Object>> mapList = (List<Map<String, Object>>)resultMap.get("RESPONSE_DATA");
+            for (Map<String, Object> selectedMap : mapList) {
+                stockInfos.add(createStockInfo(selectedMap));
+            }
+        }
+
+        return  stockInfos;
+    }
+
+    private StockInfo createStockInfo(Map<String, Object> selectedMap) {
+        StockInfo stockInfo = new StockInfo();
+
+        stockInfo.setStockCd(selectedMap.get("StockCd").toString());
+        stockInfo.setStockNm(selectedMap.get("JongName").toString());
+        stockInfo.setNowPrice(Long.parseLong(selectedMap.get("CurJuka").toString()));
+        stockInfo.setUpdateDt(selectedMap.get("UpdateDt").toString());
+
+        return stockInfo;
     }
 
     @NonNull
@@ -68,6 +97,7 @@ public class RecyclerStockDataAdapter extends RecyclerView.Adapter<StockViewHold
         holder.txtNowPrice.setText(Long.toString(stockInfo.getNowPrice()));
         holder.txtTitle.setText(stockInfo.getStockNm() + "\n(" + stockInfo.getStockCd() + ")");
         holder.txtUpdateDt.setText(stockInfo.getUpdateDt().toString());
+        holder.txtDebi.setText(stockInfo.getDebi() + "(" + stockInfo.getDungrak() + ")");
 
     }
 
@@ -84,6 +114,7 @@ class StockViewHolder extends RecyclerView.ViewHolder{
     public TextView txtTitle;
     public TextView txtUpdateDt;
     public TextView txtNowPrice;
+    public TextView txtDebi;
 
     public StockViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -91,5 +122,6 @@ class StockViewHolder extends RecyclerView.ViewHolder{
         txtTitle = itemView.findViewById(R.id.stock_title_txt);
         txtUpdateDt = itemView.findViewById(R.id.update_dt_txt);
         txtNowPrice = itemView.findViewById(R.id.now_price_txt);
+        txtDebi = itemView.findViewById(R.id.debi_txt);
     }
 }

@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HttpBizService{
@@ -57,7 +58,8 @@ public class HttpBizService{
 
             if (responseCode == HttpURLConnection.HTTP_OK){
                 ObjectMapper om = new ObjectMapper();
-                //resultMap = om.readValue(temp, new TypeReference<Map<String, Object>>(){});
+                List<Map<String, Object>> resultData = om.readValue(temp, new TypeReference<List<Map<String, Object>>>(){});
+                resultMap.put("RESPONSE_DATA", resultData);
             }
 
             resultMap.put("RESPONSE_CODE", Integer.toString(responseCode));
