@@ -1,6 +1,4 @@
-package biztrip.stock;
-
-import java.util.Date;
+package biztrip.stock.biz;
 
 import lombok.Data;
 

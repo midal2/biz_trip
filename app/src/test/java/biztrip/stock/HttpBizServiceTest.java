@@ -9,7 +9,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import biztrip.stock.biz.HttpBizService;
 
 
 @RunWith(MockitoJUnitRunner.class)

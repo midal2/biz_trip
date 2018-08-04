@@ -1,10 +1,11 @@
-package biztrip.stock;
+package biztrip.stock.biz;
 
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import static biztrip.util.Common.null2void;
 
 public class StockModel implements Stock.Model {

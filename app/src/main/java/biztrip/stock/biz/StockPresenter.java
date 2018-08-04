@@ -1,6 +1,4 @@
-package biztrip.stock;
-
-import java.util.List;
+package biztrip.stock.biz;
 
 public class StockPresenter implements Stock.Present {
 
@@ -20,7 +18,7 @@ public class StockPresenter implements Stock.Present {
     }
 
     @Override
-    public void getRecentlyData(List<StockInfo> oldData, Stock.ViewRecently view) {
+    public void getRecentlyData(Stock.ViewRecently view) {
         view.showRecentlyData(stockModel.getAllInfo());
     }
 }

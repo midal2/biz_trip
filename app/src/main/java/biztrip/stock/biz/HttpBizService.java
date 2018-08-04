@@ -1,4 +1,4 @@
-package biztrip.stock;
+package biztrip.stock.biz;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

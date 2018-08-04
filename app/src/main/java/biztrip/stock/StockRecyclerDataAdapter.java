@@ -9,67 +9,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import biztrip.stock.biz.HttpBizService;
+import biztrip.stock.biz.StockInfo;
 import lombok.Data;
 
 import static biztrip.util.Common.Step;
 
 @Data
-public class RecyclerStockDataAdapter extends RecyclerView.Adapter<StockViewHolder> {
+public class StockRecyclerDataAdapter extends RecyclerView.Adapter<StockViewHolder> {
     private ArrayList<StockInfo> stockInfos;
 
-
-    public RecyclerStockDataAdapter(){
-        stockInfos = createDummyData();
-    }
-
-    /**
-     * 임시데이터
-     * @return
-     */
-    private ArrayList<StockInfo> createDummyData() {
-        ArrayList<StockInfo> stockInfos = new ArrayList();
-
-        for(int i=0; i<20; i++){
-            StockInfo stockInfo = new StockInfo();
-            stockInfo.setNowPrice(i * 10000);
-            stockInfo.setStockCd("0000" + i);
-            stockInfo.setStockNm("Stock" + i);
-            stockInfo.setUpdateDt("");
-
-            stockInfos.add(stockInfo);
-        }
-        return  stockInfos;
-    }
-
-    private ArrayList<StockInfo> createRealData() {
-        ArrayList<StockInfo> stockInfos = new ArrayList();
-
-        HttpBizService httpBizService = new HttpBizService();
-        Map<String, Object> resultMap = httpBizService.send("http://13.209.159.207:9000/stock/getAllInfo", "");
-
-        if ("0000".equals(resultMap.get("RESPONSE_CODE"))) {
-            List<Map<String, Object>> mapList = (List<Map<String, Object>>)resultMap.get("RESPONSE_DATA");
-            for (Map<String, Object> selectedMap : mapList) {
-                stockInfos.add(createStockInfo(selectedMap));
-            }
-        }
-
-        return  stockInfos;
-    }
-
-    private StockInfo createStockInfo(Map<String, Object> selectedMap) {
-        StockInfo stockInfo = new StockInfo();
-
-        stockInfo.setStockCd(selectedMap.get("StockCd").toString());
-        stockInfo.setStockNm(selectedMap.get("JongName").toString());
-        stockInfo.setNowPrice(Long.parseLong(selectedMap.get("CurJuka").toString()));
-        stockInfo.setUpdateDt(selectedMap.get("UpdateDt").toString());
-
-        return stockInfo;
+    public StockRecyclerDataAdapter(){
+        stockInfos = new ArrayList();;
     }
 
     @NonNull
@@ -83,7 +37,7 @@ public class RecyclerStockDataAdapter extends RecyclerView.Adapter<StockViewHold
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         Step("view를 생성");
-        View view = layoutInflater.inflate(R.layout.stock_item_fragment, parent, false);
+        View view = layoutInflater.inflate(R.layout.fragment_stock, parent, false);
 
         StockViewHolder viewHolder = new StockViewHolder(view) ;
 

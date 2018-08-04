@@ -1,20 +1,20 @@
-package biztrip.stock;
+package biztrip.stock.biz;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Stock {
 
-    interface Model{
+    public interface Model{
         ArrayList<StockInfo> getAllInfo();
     }
 
-    interface Present{
+    public interface Present{
         void getStockList(Stock.ViewAll view);
-        void getRecentlyData(List<StockInfo> oldData, Stock.ViewRecently view);
+        void getRecentlyData(Stock.ViewRecently view);
     }
 
-    interface ViewAll{
+    public interface ViewAll{
         /**
          * 전체 목록을 표시한다
          * @param stockInfos
@@ -22,7 +22,7 @@ public class Stock {
         void showAllStockData(List<StockInfo> stockInfos);
     }
 
-    interface ViewRecently{
+    public interface ViewRecently{
         /**
          * 최신목록을 표시한다
          * @param newData
