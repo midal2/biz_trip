@@ -23,7 +23,7 @@ public class StockRecyclerDataAdapter extends RecyclerView.Adapter<StockViewHold
     private ArrayList<StockInfo> stockInfos;
 
     public StockRecyclerDataAdapter(){
-        stockInfos = new ArrayList();;
+        stockInfos = new ArrayList();
     }
 
     @NonNull

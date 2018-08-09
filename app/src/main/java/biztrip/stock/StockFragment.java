@@ -1,8 +1,9 @@
 package biztrip.stock;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,27 +13,32 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import biztrip.stock.biz.Stock;
 import biztrip.stock.biz.StockInfo;
+import biztrip.stock.biz.StockPresenter;
 
 public class StockFragment extends Fragment {
 
-    // TODO: Customize parameters
-    private Stock.Present stockPresent;
     private StockRecyclerDataAdapter recyclerStockDataAdapter;
+    private StockList_AsyncTask stockListAsyncTask;
+    private RecyclerView recyclerView;
+
+    private static int cnt = 0;
+    private int stockFragmentcnt = 0;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public StockFragment() {
-
+        this.stockFragmentcnt = ++cnt;
     }
 
-    public static StockFragment newInstance(Stock.Present stockPresent) {
+    public static StockFragment newInstance() {
+        Log.d("StockFragment", "newInstance");
         StockFragment fragment = new StockFragment();
-        fragment.setStockPresent(stockPresent);
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -41,144 +47,145 @@ public class StockFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(getClass().getSimpleName(), "onCreate/" + stockFragmentcnt);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.d(getClass().getSimpleName(), "onCreateView/" + stockFragmentcnt);
         View view = inflater.inflate(R.layout.fragment_stock_list , container, false);
-
-        recyclerStockDataAdapter = new StockRecyclerDataAdapter();
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(recyclerStockDataAdapter);
-
-        StockList_AsyncTask stockListAsyncTask = new StockList_AsyncTask(recyclerView, recyclerStockDataAdapter);
-        stockListAsyncTask.execute(stockPresent);
-
         return view;
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        Log.d(this.getClass().getSimpleName(),"OnStart");
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        DataGather dataGather = new DataGather(recyclerStockDataAdapter);
-        dataGather.execute(stockPresent);
+        Log.d(getClass().getSimpleName(), "onViewCreated/" + stockFragmentcnt + "/" + Thread.currentThread().getId());
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerStockDataAdapter = new StockRecyclerDataAdapter();
+        recyclerView.setAdapter(recyclerStockDataAdapter);
+
+        stockListAsyncTask = new StockList_AsyncTask(stockFragmentcnt);
+        stockListAsyncTask.execute();
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    class StockList_AsyncTask extends AsyncTask<Void, StockRecyclerDataAdapter, DataGather> implements Stock.ViewAll {
+        private Stock.Present present;
+        private int stockListcnt = 0;
 
+        public StockList_AsyncTask(int cnt) {
+            super();
+            this.stockListcnt = cnt;
+            Log.d("StockList_AsyncTask", "StockList_AsyncTask/" + stockListcnt + "/" + Thread.currentThread().getId());
+            this.present = new StockPresenter();
+        }
 
-    }
+        @Override
+        protected void onProgressUpdate(StockRecyclerDataAdapter... values) {
+            Log.d(this.getClass().getSimpleName(), "onProgressUpdate/" + stockListcnt+ "/" + Thread.currentThread().getId());
+            recyclerView.setAdapter(values[0]);
+        }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
+        @Override
+        protected DataGather doInBackground(Void ... params) {
+            Log.d(this.getClass().getSimpleName(), "doInBackground/" + stockListcnt + "/" + Thread.currentThread().getId());
+            present.getStockList(this);
+            return new DataGather(stockListcnt);
+        }
 
-    public void setStockPresent(Stock.Present stockPresent) {
-        this.stockPresent = stockPresent;
-    }
-}
+        @Override
+        protected void onPostExecute(DataGather dataGather) {
+            super.onPostExecute(dataGather);
+            Log.d(this.getClass().getSimpleName(), "onPostExecute/" + stockListcnt+ "/" + Thread.currentThread().getId());
+            dataGather.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, present);
+        }
 
-class StockList_AsyncTask extends AsyncTask<Stock.Present, StockRecyclerDataAdapter, Void> implements Stock.ViewAll {
-    private StockRecyclerDataAdapter recyclerStockDataAdapter;
-    private RecyclerView recyclerView;
-
-    public StockList_AsyncTask(RecyclerView view, StockRecyclerDataAdapter adapter) {
-        super();
-
-        this.recyclerView = view;
-        this.recyclerStockDataAdapter = adapter;
-    }
-
-    @Override
-    protected void onProgressUpdate(StockRecyclerDataAdapter... values) {
-        recyclerView.setAdapter(values[0]);
-    }
-
-    @Override
-    protected Void doInBackground(Stock.Present... params) {
-        params[0].getStockList(this);
-        return null;
-    }
-
-    @Override
-    public void showAllStockData(List<StockInfo> stockInfos) {
-        recyclerStockDataAdapter.setStockInfos((ArrayList<StockInfo>)stockInfos);
-        publishProgress(recyclerStockDataAdapter);
-    }
-}
-
-
-class DataGather extends AsyncTask<Stock.Present, Integer, Void> implements Stock.ViewRecently {
-    private StockRecyclerDataAdapter recyclerStockDataAdapter;
-
-    public DataGather(StockRecyclerDataAdapter recyclerStockDataAdapter) {
-        this.recyclerStockDataAdapter = recyclerStockDataAdapter;
-    }
-
-    @Override
-    protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
-        for(Integer selectedIdx : values){
-            recyclerStockDataAdapter.notifyItemChanged(selectedIdx);
+        @Override
+        public void showAllStockData(List<StockInfo> stockInfos) {
+            Log.d(this.getClass().getSimpleName(), "showAllStockData/" + stockListcnt + "/" + Thread.currentThread().getId());
+            recyclerStockDataAdapter.setStockInfos((ArrayList<StockInfo>)stockInfos);
+            publishProgress(recyclerStockDataAdapter);
         }
     }
 
-    @Override
-    protected Void doInBackground(Stock.Present... presents) {
-        while (true) {
-            try {
-                Log.d(this.getClass().getSimpleName(),"doInBackground");
+    class DataGather extends AsyncTask<Stock.Present, Integer, Void> implements Stock.ViewRecently {
+        private int id;
+
+        public DataGather(int cnt) {
+            super();
+            id = cnt;
+            Log.d(getClass().getSimpleName(), "DataGather/" + cnt + "/" + Thread.currentThread().getId());
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            Log.d(getClass().getSimpleName(), "onProgressUpdate/" + cnt+ "/" + Thread.currentThread().getId());
+            super.onProgressUpdate(values);
+            for(Integer selectedIdx : values){
+                recyclerStockDataAdapter.notifyItemChanged(selectedIdx);
+            }
+        }
+
+        @Override
+        protected Void doInBackground(Stock.Present... presents) {
+            while(!isCancelled()){
+                Log.d(this.getClass().getSimpleName(),"doInBackground/" + id + "/" + Thread.currentThread().getId());
                 presents[0].getRecentlyData(this);
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Log.e(getClass().getSimpleName(), e.getMessage()) ;
-            }
-        }
-    }
-
-    @Override
-    public void showRecentlyData(List<StockInfo> newData) {
-        if (newData == null || newData.size() == 0){
-            return;
-        }
-
-        for(StockInfo newInfo : newData){
-            StockInfo oldInfo = getOldInfo(newInfo.getStockCd());
-
-            if (oldInfo == null){
-                recyclerStockDataAdapter.getStockInfos().add(newInfo);
-                publishProgress(recyclerStockDataAdapter.getStockInfos().indexOf(newInfo));
-                continue;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
-            if (oldInfo.getUpdateDt().equals(newInfo.getUpdateDt())){
-                continue;
+            return null;
+        }
+
+        @Override
+        public void showRecentlyData(List<StockInfo> newData) {
+            if (newData == null || newData.size() == 0){
+                return;
             }
 
-            oldInfo.setStockNm(newInfo.getStockNm());
-            oldInfo.setDungrak(newInfo.getDungrak());
-            oldInfo.setDebi(newInfo.getDebi());
-            oldInfo.setUpdateDt(newInfo.getUpdateDt());
-            oldInfo.setNowPrice(newInfo.getNowPrice());
-            publishProgress(recyclerStockDataAdapter.getStockInfos().indexOf(oldInfo));
-        }
-    }
+            for(StockInfo newInfo : newData){
+                StockInfo oldInfo = getOldInfo(newInfo.getStockCd());
 
-    private StockInfo getOldInfo(String stockCd) {
-        ArrayList<StockInfo> stockInfos = recyclerStockDataAdapter.getStockInfos();
+                if (oldInfo == null){
+                    recyclerStockDataAdapter.getStockInfos().add(newInfo);
+                    publishProgress(recyclerStockDataAdapter.getStockInfos().indexOf(newInfo));
+                    continue;
+                }
 
-        for(StockInfo selectedInfo : stockInfos){
-            if (stockCd.equals(selectedInfo.getStockCd())){
-                return selectedInfo;
+                if (oldInfo.getUpdateDt().equals(newInfo.getUpdateDt())){
+                    continue;
+                }
+
+                oldInfo.setStockNm(newInfo.getStockNm());
+                oldInfo.setDungrak(newInfo.getDungrak());
+                oldInfo.setDebi(newInfo.getDebi());
+                oldInfo.setUpdateDt(newInfo.getUpdateDt());
+                oldInfo.setNowPrice(newInfo.getNowPrice());
+                publishProgress(recyclerStockDataAdapter.getStockInfos().indexOf(oldInfo));
             }
         }
 
-        return null;
+        @Nullable
+        private StockInfo getOldInfo(String stockCd) {
+            ArrayList<StockInfo> stockInfos = recyclerStockDataAdapter.getStockInfos();
+
+            for(StockInfo selectedInfo : stockInfos){
+                if (stockCd.equals(selectedInfo.getStockCd())){
+                    return selectedInfo;
+                }
+            }
+
+            return null;
+        }
     }
 }
+
+
